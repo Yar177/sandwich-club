@@ -29,8 +29,7 @@ public class JsonUtils {
         return sandwich;
     }
 
-
-    public static List<String> parseJsonData(JSONObject obj, String pattern)throws JSONException {
+    private static List<String> parseJsonData(JSONObject obj, String pattern)throws JSONException {
         List<String> listObjs = new ArrayList<>();
         JSONArray jsonArray = obj.getJSONArray (pattern);
         for (int i = 0; i < jsonArray.length(); ++i) {
