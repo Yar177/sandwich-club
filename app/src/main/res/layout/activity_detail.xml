@@ -8,6 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="8dp"
         >
 
 
@@ -37,6 +38,7 @@
         <TextView
             android:id="@+id/also_known_tv"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -50,6 +52,7 @@
         <TextView
             android:id="@+id/ingredients_tv"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -63,6 +66,7 @@
         <TextView
             android:id="@+id/origin_tv"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -76,9 +80,9 @@
         <TextView
         android:id="@+id/description_tv"
         android:layout_gravity="center"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 
     </LinearLayout>
     </ScrollView>
