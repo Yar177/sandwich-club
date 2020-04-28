@@ -18,14 +18,6 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
     Sandwich sandwich = new Sandwich();
-
-
-//    private List<String> alsoKnownAs = null;
-//    private String placeOfOrigin;
-//    private String description;
-//    private String image;
-//    private List<String> ingredients = null;
-
     TextView alsoKnownAs, placeOfOrigin, description, ingredients;
 
     @Override
@@ -55,12 +47,10 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
             return;
         }
-
         populateUI();
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(ingredientsIv);
-
         setTitle(sandwich.getMainName());
     }
 
@@ -71,7 +61,6 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI() {
         alsoKnownAs = (TextView) findViewById(R.id.also_known_tv);
-       // alsoKnownAs.setText(sandwich.getAlsoKnownAs().toString());
         int nameSize = sandwich.getAlsoKnownAs().size();
         if(nameSize > 0){
             for (int i = 0; i < nameSize; i++){
@@ -82,18 +71,12 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         }
-
         placeOfOrigin = (TextView) findViewById(R.id.origin_tv);
         placeOfOrigin.setText(sandwich.getPlaceOfOrigin());
-
         description = (TextView) findViewById(R.id.description_tv);
         description.setText(sandwich.getDescription());
-
         ingredients = (TextView) findViewById(R.id.ingredients_tv);
-      //  ingredients.setText(sandwich.getIngredients().toString());
-
         int ingredientsize = sandwich.getIngredients().size();
-
         if(sandwich.getIngredients().size() > 0) {
             for (int i = 0; i < ingredientsize; i++) {
                 if (i != (ingredientsize - 1)) {
@@ -103,6 +86,5 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         }
-
     }
 }
