@@ -26,9 +26,18 @@ public class JsonUtils {
         Sandwich sandwich = new Sandwich();
         try {
             JSONObject jsonObj = new JSONObject(json);
-            sandwich.setMainName(jsonObj.getString("mainName"));
+            JSONObject nameObj = jsonObj.getJSONObject("name");
+            String name = nameObj.getString("mainName");
 
-            List<JSONObject> listObjs = parseJsonData(jsonObj,"alsoKnownAs");
+            sandwich.setMainName(nameObj.getString("mainName"));
+            sandwich.setAlsoKnownAs(parseJsonData(nameObj,"alsoKnownAs"));
+
+            //List<String> listObjs = parseJsonData(nameObj,"alsoKnownAs");
+            sandwich.setPlaceOfOrigin(jsonObj.getString("placeOfOrigin"));
+            sandwich.setDescription(jsonObj.getString("description"));
+            sandwich.setImage(jsonObj.getString("image"));
+
+            sandwich.setIngredients(parseJsonData(nameObj,"ingredients"));
 
 
 
@@ -44,12 +53,14 @@ public class JsonUtils {
     }
 
 
-    public static List<JSONObject> parseJsonData(JSONObject obj, String pattern)throws JSONException {
+    public static List<String> parseJsonData(JSONObject obj, String pattern)throws JSONException {
 
-        List<JSONObject> listObjs = new ArrayList<JSONObject>();
-        JSONArray geodata = obj.getJSONArray (pattern);
-        for (int i = 0; i < geodata.length(); ++i) {
-            final JSONObject site = geodata.getJSONObject(i);
+        List<String> listObjs = new ArrayList<>();
+        JSONArray jsonArray = obj.getJSONArray (pattern);
+        for (int i = 0; i < jsonArray.length(); ++i) {
+
+            final String site = String.valueOf(jsonArray.getString(i));
+
             listObjs.add(site);
         }
         return listObjs;
