@@ -71,7 +71,17 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI() {
         alsoKnownAs = (TextView) findViewById(R.id.also_known_tv);
-        alsoKnownAs.setText(sandwich.getAlsoKnownAs().toString());
+       // alsoKnownAs.setText(sandwich.getAlsoKnownAs().toString());
+        int nameSize = sandwich.getAlsoKnownAs().size();
+        if(nameSize > 0){
+            for (int i = 0; i < nameSize; i++){
+                if (i != (nameSize -1)){
+                    alsoKnownAs.append(sandwich.getAlsoKnownAs().get(i) + ", ");
+                }else {
+                    alsoKnownAs.append(sandwich.getAlsoKnownAs().get(i) + ".");
+                }
+            }
+        }
 
         placeOfOrigin = (TextView) findViewById(R.id.origin_tv);
         placeOfOrigin.setText(sandwich.getPlaceOfOrigin());
@@ -80,7 +90,19 @@ public class DetailActivity extends AppCompatActivity {
         description.setText(sandwich.getDescription());
 
         ingredients = (TextView) findViewById(R.id.ingredients_tv);
-        ingredients.setText(sandwich.getIngredients().toString());
+      //  ingredients.setText(sandwich.getIngredients().toString());
+
+        int ingredientsize = sandwich.getIngredients().size();
+
+        if(sandwich.getIngredients().size() > 0) {
+            for (int i = 0; i < ingredientsize; i++) {
+                if (i != (ingredientsize - 1)) {
+                    ingredients.append(sandwich.getIngredients().get(i) + ", ");
+                } else {
+                    ingredients.append(sandwich.getIngredients().get(i) + ".");
+                }
+            }
+        }
 
     }
 }
